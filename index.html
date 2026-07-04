@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>善通寺市災害ボランティアセンター 特設ページ</title>
+<meta name="description" content="善通寺市災害ボランティアセンターの開設状況・ボランティア募集情報をお知らせする特設ページです。">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+<header class="site-header">
+  <p class="site-header__org">善通寺市社会福祉協議会</p>
+  <h1 class="site-header__title">災害ボランティアセンター<span class="site-header__sub">特設ページ</span></h1>
+</header>
+
+<main class="main" id="main">
+
+  <!-- 読み込み中表示 -->
+  <div class="loading" id="view-loading" aria-live="polite">
+    <p>最新の情報を読み込んでいます…</p>
+  </div>
+
+  <!-- 読み込み失敗時表示 -->
+  <div class="error-view" id="view-error" hidden>
+    <div class="card card--error">
+      <h2>最新情報を取得できませんでした</h2>
+      <p>通信状況をご確認のうえ、時間をおいてページを再読み込みしてください。</p>
+      <p>お急ぎの場合は、下記までお電話でお問い合わせください。</p>
+      <p class="error-view__tel">
+        善通寺市社会福祉協議会<br>
+        <a href="tel:0877-63-0455" class="tel-link">0877-63-0455</a>
+      </p>
+      <button type="button" class="btn btn--secondary" onclick="location.reload()">ページを再読み込みする</button>
+    </div>
+  </div>
+
+  <!-- 平常時表示 -->
+  <div class="normal-view" id="view-normal" hidden>
+    <div class="card card--normal">
+      <h2>現在、災害ボランティアセンターは開設していません</h2>
+      <p id="normal-message"></p>
+    </div>
+    <section class="section" id="normal-links-section" hidden>
+      <h2 class="section__title">関連リンク</h2>
+      <ul class="link-list" id="normal-links-list"></ul>
+    </section>
+  </div>
+
+  <!-- 有事(開設時)表示 -->
+  <div class="active-view" id="view-active" hidden>
+
+    <!-- 開設状況バナー -->
+    <div class="status-banner" id="status-banner" role="status">
+      <p class="status-banner__label">災害ボランティアセンター</p>
+      <p class="status-banner__value" id="status-value"></p>
+      <p class="status-banner__message" id="status-message"></p>
+    </div>
+
+    <!-- お知らせ帯 -->
+    <div class="notice" id="notice-band" hidden>
+      <p id="notice-text"></p>
+    </div>
+
+    <!-- 募集状況・活動内容 -->
+    <section class="section" id="recruit-section" hidden>
+      <h2 class="section__title">募集状況・活動内容</h2>
+      <p class="recruit-status" id="recruit-status"></p>
+      <div class="section__body" id="activity-content"></div>
+    </section>
+
+    <!-- 事前受付フォーム -->
+    <section class="section" id="form-section" hidden>
+      <h2 class="section__title">ボランティア事前受付</h2>
+      <p id="form-guide">下のボタンから事前受付フォームにお進みください。</p>
+      <p class="btn-wrap">
+        <a class="btn btn--primary" id="form-button" href="#" target="_blank" rel="noopener">事前受付フォームへ進む</a>
+      </p>
+      <p class="form-closed" id="form-closed" hidden>事前受付は終了しました。ご協力ありがとうございました。</p>
+    </section>
+
+    <!-- 持ち物・服装 -->
+    <section class="section" id="items-section" hidden>
+      <h2 class="section__title">持ち物・服装について</h2>
+      <div class="section__body" id="items-notice"></div>
+    </section>
+
+    <!-- ボランティア保険 -->
+    <section class="section" id="insurance-section" hidden>
+      <h2 class="section__title">ボランティア保険</h2>
+      <p>活動には事前のボランティア保険加入をお願いしています。下記からオンラインで加入できます。</p>
+      <p class="btn-wrap">
+        <a class="btn btn--secondary" id="insurance-button" href="#" target="_blank" rel="noopener">保険の加入手続きへ進む</a>
+      </p>
+    </section>
+
+    <!-- リンク集 -->
+    <section class="section" id="links-section" hidden>
+      <h2 class="section__title">関連リンク</h2>
+      <ul class="link-list" id="links-list"></ul>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="section" id="contact-section">
+      <h2 class="section__title">お問い合わせ</h2>
+      <p>善通寺市災害ボランティアセンター(運営:善通寺市社会福祉協議会)</p>
+      <p class="contact-tel" id="contact-tel-wrap" hidden>
+        電話:<a href="#" id="contact-tel" class="tel-link"></a>
+      </p>
+      <p id="contact-hours"></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p id="last-updated"></p>
+  <p>&copy; <span id="copyright-year"></span> 善通寺市社会福祉協議会</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
