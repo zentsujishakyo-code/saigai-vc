@@ -10,7 +10,7 @@
   'use strict';
 
   var CONFIG = {
-    GAS_URL: 'https://script.google.com/macros/s/【https://script.google.com/macros/s/AKfycbyYDGs4tcZndrjMrdv0WQTVF4Dh0_Rj1WyBLzYk7ZwsLw6Kop22jctvZRG9Gt2Vbb2V/exec】/exec',
+    GAS_URL: 'https://script.google.com/macros/s/AKfycbyYDGs4tcZndrjMrdv0WQTVF4Dh0_Rj1WyBLzYk7ZwsLw6Kop22jctvZRG9Gt2Vbb2V/exec',
     TIMEOUT_MS: 15000,           // この時間内に応答がなければエラー表示
     CALLBACK_NAME: 'vcPageRender'
   };
