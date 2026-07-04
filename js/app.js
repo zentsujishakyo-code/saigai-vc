@@ -62,6 +62,51 @@
     return count;
   }
 
+  /** 事前受付の日程一覧を描画 */
+  function renderSchedule(schedule) {
+    var listEl = $('schedule-list');
+    listEl.textContent = '';
+    var count = 0;
+    (schedule || []).forEach(function (day) {
+      if (!day || !day.label) return;
+      var li = document.createElement('li');
+      li.className = 'schedule-item';
+
+      var info = document.createElement('div');
+      info.className = 'schedule-item__info';
+      var dateEl = document.createElement('span');
+      dateEl.className = 'schedule-item__date';
+      dateEl.textContent = day.label;
+      info.appendChild(dateEl);
+      if (day.capacity) {
+        var cap = document.createElement('span');
+        cap.className = 'schedule-item__capacity';
+        cap.textContent = '定員 ' + day.capacity + '名';
+        info.appendChild(cap);
+      }
+      li.appendChild(info);
+
+      if (day.status === '受付中' && isSafeUrl(day.url)) {
+        var a = document.createElement('a');
+        a.className = 'btn btn--primary';
+        a.href = day.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = '申し込む';
+        li.appendChild(a);
+      } else {
+        var badge = document.createElement('span');
+        badge.className = 'schedule-item__closed';
+        badge.textContent = '受付終了';
+        li.appendChild(badge);
+      }
+
+      listEl.appendChild(li);
+      count++;
+    });
+    $('schedule-section').hidden = (count === 0);
+  }
+
   // ---------- 描画本体 ----------
 
   function render(data) {
@@ -76,7 +121,7 @@
     if (mode !== '有事') {
       renderNormalView(settings, links);
     } else {
-      renderActiveView(settings, links);
+      renderActiveView(settings, links, data && data.schedule);
     }
 
     // フッター:最終更新日時
@@ -112,7 +157,7 @@
 
   // ---------- 有事表示 ----------
 
-  function renderActiveView(settings, links) {
+  function renderActiveView(settings, links, schedule) {
     $('view-active').hidden = false;
 
     // 開設状況バナー
@@ -143,19 +188,8 @@
       $('recruit-section').hidden = false;
     }
 
-    // 事前受付フォーム
-    var formUrl = getVal(settings, 'form_url');
-    var formOpen = getVal(settings, 'form_open');
-    if (isSafeUrl(formUrl)) {
-      $('form-section').hidden = false;
-      if (formOpen === '受付中') {
-        $('form-button').href = formUrl;
-      } else {
-        $('form-guide').hidden = true;
-        $('form-button').hidden = true;
-        $('form-closed').hidden = false;
-      }
-    }
+    // 事前受付(日程一覧)
+    renderSchedule(schedule);
 
     // 持ち物・服装
     var items = getVal(settings, 'items_notice');
