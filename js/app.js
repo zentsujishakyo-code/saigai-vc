@@ -79,6 +79,8 @@
       dateEl.textContent = day.label;
       info.appendChild(dateEl);
       if (day.capacity) {
+        var cap = document.createElement('span');
+        cap.className = 'schedule-item__capacity';
         var capText = '定員 ' + day.capacity + '名';
         if (day.remaining !== null && day.remaining !== undefined) {
           capText += '(残り ' + day.remaining + '名)';
@@ -267,4 +269,3 @@
 
   loadData();
 })();
-
