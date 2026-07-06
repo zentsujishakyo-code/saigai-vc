@@ -163,6 +163,8 @@ body:not(.is-loading) .loading { display: none; }
   font-size: 1.05rem;
   margin: 0 0 10px;
 }
+.recruit-status p { margin: 0 0 0.4em; }
+.recruit-status p:last-child { margin-bottom: 0; }
 
 /* ---------- ボタン ---------- */
 .btn-wrap { margin: 16px 0 4px; text-align: center; }
@@ -292,4 +294,3 @@ a { color: var(--color-link); }
   .status-banner__value { font-size: 2rem; }
   .btn-wrap .btn { display: block; width: 100%; }
 }
-
