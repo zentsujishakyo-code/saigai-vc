@@ -10,7 +10,7 @@
   'use strict';
 
   var CONFIG = {
-    GAS_URL: 'https://script.google.com/macros/s/AKfycbyYDGs4tcZndrjMrdv0WQTVF4Dh0_Rj1WyBLzYk7ZwsLw6Kop22jctvZRG9Gt2Vbb2V/exec',
+    GAS_URL: 'https://script.google.com/macros/s/【ここにデプロイIDを含むURL】/exec',
     TIMEOUT_MS: 15000,           // この時間内に応答がなければエラー表示
     CALLBACK_NAME: 'vcPageRender'
   };
@@ -81,11 +81,7 @@
       if (day.capacity) {
         var cap = document.createElement('span');
         cap.className = 'schedule-item__capacity';
-        var capText = '定員 ' + day.capacity + '名';
-        if (day.remaining !== null && day.remaining !== undefined) {
-          capText += '(残り ' + day.remaining + '名)';
-        }
-        cap.textContent = capText;
+        cap.textContent = '定員 ' + day.capacity + '名';
         info.appendChild(cap);
       }
       li.appendChild(info);
@@ -187,7 +183,7 @@
     var recruitStatus = getVal(settings, 'recruit_status');
     var activity = getVal(settings, 'activity_content');
     if (recruitStatus || activity) {
-      $('recruit-status').textContent = recruitStatus;
+      setMultiline($('recruit-status'), recruitStatus);
       setMultiline($('activity-content'), activity);
       $('recruit-section').hidden = false;
     }
