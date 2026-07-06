@@ -10,7 +10,7 @@
   'use strict';
 
   var CONFIG = {
-    GAS_URL: 'https://script.google.com/macros/s/【ここにデプロイIDを含むURL】/exec',
+    GAS_URL: 'https://script.google.com/macros/s/AKfycbxfxX03-4rcVvlXLcRvq7ty4blGt3Wo3A_T93Y0TVzWkpm6dFGnJkiGE5DmCeCcCXcOWQ/exec',
     TIMEOUT_MS: 15000,           // この時間内に応答がなければエラー表示
     CALLBACK_NAME: 'vcPageRender'
   };
